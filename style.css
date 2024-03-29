@@ -1,0 +1,65 @@
+.main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.canvas {
+  border: 2px solid black;
+}
+.top,
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 0 20px 0;
+}
+.block,
+input,
+select,
+button {
+  width: 80%;
+}
+.top > block {
+  margin: 10px;
+}
+.bottom > button {
+  margin: 10px;
+}
+.block > p {
+  margin: 10px auto;
+  width: 50%;
+}
+
+@media (max-width: 576px) {
+  .main {
+    width: 90%; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none; 
+  }
+
+  .top,
+  .bottom {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .block,
+  input,
+  select,
+  button {
+    width: 100%; 
+    margin: 10px 0; 
+  }
+
+  .block > p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .canvas {
+    width: calc(100% - 4px); 
+  }
+}
