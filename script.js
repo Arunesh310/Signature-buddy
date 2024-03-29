@@ -12,28 +12,17 @@ let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 
-
 function getCoordinates(e) {
   let x, y;
-  if (
-    e.type === "mousedown" ||
-    e.type === "mousemove" ||
-    e.type === "mouseup"
-  ) {
-    x = e.offsetX;
-    y = e.offsetY;
-  } else if (
-    e.type === "touchstart" ||
-    e.type === "touchmove" ||
-    e.type === "touchend"
-  ) {
-    const rect = canvas.getBoundingClientRect();
-    x = e.touches[0].clientX - rect.left;
-    y = e.touches[0].clientY - rect.top;
+  if (e.clientX !== undefined && e.clientY !== undefined) {
+    x = e.clientX - canvas.getBoundingClientRect().left;
+    y = e.clientY - canvas.getBoundingClientRect().top;
+  } else if (e.touches && e.touches.length === 1) {
+    x = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+    y = e.touches[0].clientY - canvas.getBoundingClientRect().top;
   }
   return { x, y };
 }
-
 
 function drawLine(x1, y1, x2, y2) {
   ctx.beginPath();
@@ -41,7 +30,6 @@ function drawLine(x1, y1, x2, y2) {
   ctx.lineTo(x2, y2);
   ctx.stroke();
 }
-
 
 canvas.addEventListener(
   "touchmove",
