@@ -35,6 +35,14 @@ function getCoordinates(e) {
 }
 
 
+function drawLine(x1, y1, x2, y2) {
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+}
+
+
 canvas.addEventListener(
   "touchmove",
   function (e) {
@@ -58,10 +66,7 @@ canvas.addEventListener("mousedown", (e) => {
 canvas.addEventListener("mousemove", (e) => {
   if (isDrawing) {
     const { x, y } = getCoordinates(e);
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    drawLine(lastX, lastY, x, y);
     lastX = x;
     lastY = y;
   }
@@ -81,10 +86,7 @@ canvas.addEventListener("touchstart", (e) => {
 canvas.addEventListener("touchmove", (e) => {
   if (isDrawing) {
     const { x, y } = getCoordinates(e);
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    drawLine(lastX, lastY, x, y);
     lastX = x;
     lastY = y;
   }
