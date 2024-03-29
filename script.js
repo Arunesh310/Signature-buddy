@@ -12,6 +12,7 @@ let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 
+
 function getCoordinates(e) {
   let x, y;
   if (
@@ -32,6 +33,15 @@ function getCoordinates(e) {
   }
   return { x, y };
 }
+
+
+canvas.addEventListener(
+  "touchmove",
+  function (e) {
+    e.preventDefault();
+  },
+  { passive: false }
+);
 
 colorPicker.addEventListener("change", (e) => {
   ctx.strokeStyle = e.target.value;
