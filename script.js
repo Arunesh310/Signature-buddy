@@ -12,7 +12,6 @@ let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 
-
 function getCoordinates(e) {
   let x, y;
   if (
